@@ -14,4 +14,16 @@ public class HomepageController {
         return "start";
     }
 
+    @GetMapping("/add-entry")
+    public String addEntry(@RequestParam(name="name", required=false, defaultValue="stitching fan") String name, Model model) {
+        model.addAttribute("name", name);
+        return "addentry";
+    }
+
+    @GetMapping("/add-success")
+    public String addSuccess(@RequestParam(name="name", required=false, defaultValue="stitching fan") String name, Model model) {
+        model.addAttribute("name", name);
+        return "addsuccess";
+    }
+
 }

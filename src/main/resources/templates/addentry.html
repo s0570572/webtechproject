@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new entry</title>
+</head>
+<body>
+<h2>Upload your cross-stitch scheme here</h2>
+<p></p>
+<p>Please specify the title of your work and choose its topic and difficulty level from the drop-down menu. You may
+also add a short description of the piece if you like. For technical reasons, it is only possible to host links to
+external cloud services here so please first upload your jpg-file to your cloud service (e.g. Google Drive, iCloud etc.)
+and then copy the link to the file into the respective field below.</p>
+<p></p>
+<h4>Title*</h4>
+<p th:text="'Write the title of your scheme here:'" />
+//typing field
+<h4>Description(optional)</h4>
+<p th:text="'If you wish, write a short description of your scheme here:'" />
+//typing field
+<h4>Topic*</h4>
+<p th:text="'Choose the topic of your scheme from the drop-down menu:'" />
+//drop-down menu
+<h4>Difficulty level*</h4>
+<p th:text="'Choose the difficulty level of your scheme from the drop-down menu:'" />
+//drop-down menu
+<h4>Link*</h4>
+<p th:text="'Paste the link to your scheme on GoogleDrive etc. here:'" />
+//typing field
+//submit button text="Submit"
+</body>
+</html>
