@@ -13,5 +13,4 @@ jobs:
           distribution: "adopt"
           java-version: 16
       - name: clean build
-        run: chmod +x ./gradlew
-             ./gradlew clean build
+        run: ./gradlew clean test --info --stacktrace
