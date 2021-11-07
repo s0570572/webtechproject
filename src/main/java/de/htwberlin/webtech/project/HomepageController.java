@@ -26,4 +26,10 @@ public class HomepageController {
         return "addsuccess";
     }
 
+    @GetMapping("/error")
+    public String error(@RequestParam(name="name", required=false, defaultValue="stitching fan") String name, Model model) {
+        model.addAttribute("name", name);
+        return "error";
+    }
+
 }
