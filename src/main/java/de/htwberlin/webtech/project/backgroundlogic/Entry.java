@@ -1,19 +1,21 @@
 package de.htwberlin.webtech.project.backgroundlogic;
 
+import javax.persistence.Entity;
 import java.util.List;
 
+@Entity
 public class Entry {
-String title;
-Integer entryid;
-String description;
-List<String> topic;
-List<String> difficulty;
-String link;
+private String title;
+private Long entryid;
+private String description;
+private Topic topic;
+private Difficulty difficulty;
+private String link;
 
     public Entry() {
     }
 
-    public Entry(Integer entryid, String title, String link) {
+    public Entry(Long entryid, String title, String link) {
         this.entryid = entryid;
         this.title = title;
         this.link = link;
@@ -27,11 +29,11 @@ String link;
         this.title = title;
     }
 
-    public Integer getEntryid() {
+    public Long getEntryid() {
         return entryid;
     }
 
-    public void setEntryid(Integer entryid) {
+    public void setEntryid(Long entryid) {
         this.entryid = entryid;
     }
 
@@ -51,19 +53,19 @@ String link;
         this.link = link;
     }
 
-    public List<String> getTopic() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(List<String> topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
     }
 
-    public List<String> getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(List<String> difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
