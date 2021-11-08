@@ -1,16 +1,21 @@
 package de.htwberlin.webtech.project.backgroundlogic;
 
 import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Entry {
-private String title;
-private Long entryid;
-private String description;
-private Topic topic;
-private Difficulty difficulty;
-private String link;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long entryid;
+    private String title;
+    private String description;
+    private Topic topic;
+    private Difficulty difficulty;
+    private String link;
 
     public Entry() {
     }
