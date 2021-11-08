@@ -1,9 +1,6 @@
 package de.htwberlin.webtech.project.backgroundlogic;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Entry {
@@ -13,7 +10,9 @@ public class Entry {
     private Long entryid;
     private String title;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Topic topic;
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     private String link;
 
