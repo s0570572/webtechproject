@@ -24,7 +24,11 @@ public class EntryService {
         return connection;
     }
 
-    public void saveEntry(Entry entry) {
+    public Entry save(Entry entry) {
+        return repo.save(entry);
+    }
 
+    public Entry get(Long id) {
+        return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 }
