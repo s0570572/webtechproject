@@ -19,9 +19,12 @@ public class Entry {
     public Entry() {
     }
 
-    public Entry(Long entryid, String title, String link) {
+    public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link) {
         this.entryid = entryid;
         this.title = title;
+        this.description = description;
+        this.topic = topic;
+        this.difficulty = difficulty;
         this.link = link;
     }
 
