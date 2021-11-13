@@ -3,6 +3,7 @@ package de.htwberlin.webtech.project;
 import de.htwberlin.webtech.project.backgroundlogic.Difficulty;
 import de.htwberlin.webtech.project.backgroundlogic.Entry;
 import de.htwberlin.webtech.project.backgroundlogic.Topic;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,8 @@ public class EntryRestController {
     }
 
     @GetMapping(path = "/api/v1/entries")
-    public List<Entry> fetchEntries() {
-        return entries;
+    public ResponseEntity<List<Entry>> fetchEntries() {
+        return ResponseEntity.ok(entries);
     }
 
 }
