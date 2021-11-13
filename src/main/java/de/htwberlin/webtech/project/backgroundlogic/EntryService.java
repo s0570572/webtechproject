@@ -11,8 +11,17 @@ public class EntryService {
     @Autowired
     EntryRepository repo;
 
-    public void setConnection(Connection connection) {
+    private Connection connection;
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    private Connection getConnection() {
+        if (connection == null) {
+            throw new RuntimeException("Connection not set");
+        }
+        return connection;
     }
 
     public void saveEntry(Entry entry) {
