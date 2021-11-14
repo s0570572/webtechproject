@@ -3,6 +3,7 @@ package de.htwberlin.webtech.project.service;
 import de.htwberlin.webtech.project.persistence.EntryEntity;
 import de.htwberlin.webtech.project.persistence.EntryRepository;
 import de.htwberlin.webtech.project.web.Entry;
+import de.htwberlin.webtech.project.web.EntryCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +34,17 @@ public class EntryService {
         return connection;
     }
 
-    public EntryEntity save(EntryEntity entryEntity) {
-        return repo.save(entryEntity);
+    public Entry create(EntryCreateRequest request) {
+        var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity(),
+                request.getDifficultyEntity(), request.getLink());
+        entryEntity = repo.save(entryEntity);
+        return transformEntity(entryEntity);
+    }
+
+    private Entry transformEntity(EntryEntity entryEntity) {
+        return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
+                entryEntity.getDescription(), entryEntity.getTopicEntity(), entryEntity.getDifficultyEntity(),
+                entryEntity.getLink());
     }
 
     public EntryEntity get(Long id) {
@@ -44,9 +54,7 @@ public class EntryService {
     public List<Entry> findAll() {
         List<EntryEntity> entries = repo.findAll();
         return entries.stream()
-                .map(entryEntity -> new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
-                        entryEntity.getDescription(), entryEntity.getTopic(), entryEntity.getDifficulty(),
-                        entryEntity.getLink()))
+                .map(this::transformEntity)
                 .collect(Collectors.toList());
     }
 }

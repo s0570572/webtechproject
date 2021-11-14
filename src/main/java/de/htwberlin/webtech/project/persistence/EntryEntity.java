@@ -24,8 +24,7 @@ public class EntryEntity {
     public EntryEntity() {
     }
 
-    public EntryEntity(Long entryid, String title, String description, TopicEntity topicEntity, DifficultyEntity difficultyEntity, String link) {
-        this.entryid = entryid;
+    public EntryEntity(String title, String description, TopicEntity topicEntity, DifficultyEntity difficultyEntity, String link) {
         this.title = title;
         this.description = description;
         this.topicEntity = topicEntity;
@@ -61,19 +60,19 @@ public class EntryEntity {
         this.link = link;
     }
 
-    public TopicEntity getTopic() {
+    public TopicEntity getTopicEntity() {
         return topicEntity;
     }
 
-    public void setTopic(TopicEntity topicEntity) {
+    public void setTopicEntity(TopicEntity topicEntity) {
         this.topicEntity = topicEntity;
     }
 
-    public DifficultyEntity getDifficulty() {
+    public DifficultyEntity getDifficultyEntity() {
         return difficultyEntity;
     }
 
-    public void setDifficulty(DifficultyEntity difficultyEntity) {
+    public void setDifficultyEntity(DifficultyEntity difficultyEntity) {
         this.difficultyEntity = difficultyEntity;
     }
 
