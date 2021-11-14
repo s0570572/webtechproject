@@ -56,6 +56,14 @@ public class EntryService {
         return transformEntity(entryEntity);
     }
 
+    public boolean deleteById(Long entryid) {
+        if(!repo.existsById(entryid)) {
+            return false;
+        }
+        repo.deleteById(entryid);
+        return true;
+    }
+
     private Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
                 entryEntity.getDescription(), entryEntity.getTopicEntity(), entryEntity.getDifficultyEntity(),

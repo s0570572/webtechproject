@@ -43,5 +43,9 @@ public class EntryRestController {
         return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
     }
 
-    //DELETE
+    @DeleteMapping(path = "/api/v1/entries/{entryid}")
+    public ResponseEntity<Void> deleteEntry(@PathVariable Long entryid) {
+        boolean successful = entryService.deleteById(entryid);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
 }
