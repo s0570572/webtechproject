@@ -7,23 +7,19 @@ public class Entry {
     private Long entryid;
     private String title;
     private String description;
-    private Topic topic;
-    private Difficulty difficulty;
+    private TopicEntity topic;
+    private DifficultyEntity difficulty;
     private String link;
 
     public Entry() {
     }
 
-    public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link) {
-        this.entryid = entryid;
+    public Entry(Long entryid, String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
         this.title = title;
         this.description = description;
         this.topic = topic;
         this.difficulty = difficulty;
         this.link = link;
-    }
-
-    public Entry(Long entryid, String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
     }
 
     public String getTitle() {
@@ -58,19 +54,19 @@ public class Entry {
         this.link = link;
     }
 
-    public Topic getTopic() {
+    public TopicEntity getTopic() {
         return topic;
     }
 
-    public void setTopic(Topic topic) {
+    public void setTopic(TopicEntity topic) {
         this.topic = topic;
     }
 
-    public Difficulty getDifficulty() {
+    public DifficultyEntity getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(Difficulty difficulty) {
+    public void setDifficulty(DifficultyEntity difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -80,8 +76,8 @@ public class Entry {
                 "title='" + title + '\'' +
                 ", entryid=" + entryid +
                 ", description='" + description + '\'' +
-                ", topic=" + topic +
-                ", difficulty=" + difficulty +
+                ", topic=" + topic.toString() +
+                ", difficulty=" + difficulty.toString() +
                 ", link='" + link + '\'' +
                 '}';
     }
