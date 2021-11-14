@@ -27,4 +27,9 @@ public class EntryRestController {
         return ResponseEntity.ok(entries);
     }
 
+    //GET
+
+    //POST
+
+    //DELETE
 }
