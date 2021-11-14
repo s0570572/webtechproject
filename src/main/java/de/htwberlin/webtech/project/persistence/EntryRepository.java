@@ -12,8 +12,4 @@ public interface EntryRepository extends JpaRepository<EntryEntity, Long> {
 
     List<EntryEntity> findAllByTopicEntity(TopicEntity topic);
 
-    EntryEntity save(EntryEntity entry);
-
-    @Override
-    void delete(EntryEntity entity);
 }
