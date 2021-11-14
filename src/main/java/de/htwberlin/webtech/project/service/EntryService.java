@@ -47,14 +47,19 @@ public class EntryService {
                 entryEntity.getLink());
     }
 
-    public EntryEntity get(Long id) {
-        return repo.findById(id).orElseThrow(() -> new RuntimeException());
-    }
+//    public EntryEntity get(Long id) {
+//        return repo.findById(id).orElseThrow(() -> new RuntimeException());
+//    }
 
     public List<Entry> findAll() {
         List<EntryEntity> entries = repo.findAll();
         return entries.stream()
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
+    }
+
+    public Entry findById(Long entryid) {
+        var entryEntity = repo.findById(entryid);
+        return entryEntity.map(this::transformEntity).orElse(null);
     }
 }

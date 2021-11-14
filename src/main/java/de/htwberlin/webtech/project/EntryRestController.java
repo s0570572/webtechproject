@@ -4,10 +4,7 @@ import de.htwberlin.webtech.project.service.EntryService;
 import de.htwberlin.webtech.project.web.Entry;
 import de.htwberlin.webtech.project.web.EntryCreateRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,6 +22,12 @@ public class EntryRestController {
     @GetMapping(path = "/api/v1/entries")
     public ResponseEntity<List<Entry>> fetchEntries() {
         return ResponseEntity.ok(entryService.findAll());
+    }
+
+    @GetMapping(path = "/api/v1/entries/{entryid}")
+    public ResponseEntity<Entry> fetchEntryById(@PathVariable Long entryid) {
+        var entry = entryService.findById(entryid);
+        return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(path = "/api/v1/entries")
