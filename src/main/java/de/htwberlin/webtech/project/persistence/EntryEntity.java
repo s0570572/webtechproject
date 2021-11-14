@@ -40,10 +40,6 @@ public class EntryEntity {
         return entryid;
     }
 
-    public void setEntryid(Long entryid) {
-        this.entryid = entryid;
-    }
-
     public String getDescription() {
         return description;
     }
