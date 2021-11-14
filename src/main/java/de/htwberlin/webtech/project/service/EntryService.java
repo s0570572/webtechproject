@@ -35,8 +35,8 @@ public class EntryService {
     }
 
     public Entry create(EntryManipulationRequest request) {
-        var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity(),
-                request.getDifficultyEntity(), request.getLink());
+        var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity().getTopicid(),
+                request.getDifficultyEntity().getDifficultyId(), request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
     }
@@ -49,8 +49,8 @@ public class EntryService {
         var entryEntity = entryEntityOptional.get();
         entryEntity.setTitle(request.getTitle());
         entryEntity.setDescription(request.getDescription());
-        entryEntity.setTopicEntity(request.getTopicEntity());
-        entryEntity.setDifficultyEntity(request.getDifficultyEntity());
+        entryEntity.setTopicId(request.getTopicEntity().getTopicid());
+        entryEntity.setDifficultyId(request.getDifficultyEntity().getDifficultyId());
         entryEntity.setLink(request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
@@ -66,7 +66,7 @@ public class EntryService {
 
     private Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
-                entryEntity.getDescription(), entryEntity.getTopicEntity(), entryEntity.getDifficultyEntity(),
+                entryEntity.getDescription(), entryEntity.getTopicId(), entryEntity.getDifficultyId(),
                 entryEntity.getLink());
     }
 

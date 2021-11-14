@@ -14,21 +14,21 @@ public class EntryEntity {
     private String description;
     @Enumerated(EnumType.STRING)
     @Column (name = "topic")
-    private TopicEntity topicEntity;
+    private Long topicId;
     @Enumerated(EnumType.STRING)
     @Column (name = "difficulty")
-    private DifficultyEntity difficultyEntity;
+    private Long difficultyId;
     @Column (name = "link")
     private String link;
 
     public EntryEntity() {
     }
 
-    public EntryEntity(String title, String description, TopicEntity topicEntity, DifficultyEntity difficultyEntity, String link) {
+    public EntryEntity(String title, String description, Long topicId, Long difficultyId, String link) {
         this.title = title;
         this.description = description;
-        this.topicEntity = topicEntity;
-        this.difficultyEntity = difficultyEntity;
+        this.topicId = topicId;
+        this.difficultyId = difficultyId;
         this.link = link;
     }
 
@@ -60,20 +60,20 @@ public class EntryEntity {
         this.link = link;
     }
 
-    public TopicEntity getTopicEntity() {
-        return topicEntity;
+    public Long getTopicId() {
+        return topicId;
     }
 
-    public void setTopicEntity(TopicEntity topicEntity) {
-        this.topicEntity = topicEntity;
+    public void setTopicId(Long topicId) {
+        this.topicId = topicId;
     }
 
-    public DifficultyEntity getDifficultyEntity() {
-        return difficultyEntity;
+    public Long getDifficultyId() {
+        return difficultyId;
     }
 
-    public void setDifficultyEntity(DifficultyEntity difficultyEntity) {
-        this.difficultyEntity = difficultyEntity;
+    public void setDifficultyId(Long difficultyId) {
+        this.difficultyId = difficultyId;
     }
 
     @Override
@@ -82,8 +82,8 @@ public class EntryEntity {
                 "title='" + title + '\'' +
                 ", entryid=" + entryid +
                 ", description='" + description + '\'' +
-                ", topic=" + topicEntity +
-                ", difficulty=" + difficultyEntity +
+                ", topic=" + topicId +
+                ", difficulty=" + difficultyId +
                 ", link='" + link + '\'' +
                 '}';
     }
