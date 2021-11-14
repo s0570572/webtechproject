@@ -8,12 +8,17 @@ public class EntryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long entryid;
+    @Column (name = "title")
     private String title;
+    @Column (name = "description")
     private String description;
     @Enumerated(EnumType.STRING)
+    @Column (name = "topic")
     private TopicEntity topicEntity;
     @Enumerated(EnumType.STRING)
+    @Column (name = "difficulty")
     private DifficultyEntity difficultyEntity;
+    @Column (name = "link")
     private String link;
 
     public EntryEntity() {
