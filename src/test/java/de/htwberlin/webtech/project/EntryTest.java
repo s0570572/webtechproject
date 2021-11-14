@@ -11,7 +11,7 @@ class EntryTest {
 
     @Test
     void testToString(){
-
+        //test data
         String title = "Lake";
         String description = "fascinating pic of a forest lake";
         TopicEntity topic = TopicEntity.LANDSCAPE;
@@ -20,11 +20,13 @@ class EntryTest {
 
         Entry entry = new Entry(57L, title, description, topic, difficulty, link);
 
+        //expected result
         String expected = "Entry{entryid=57, title='Lake', description='fascinating pic of a forest lake', " +
                 "topic='LANDSCAPE', difficulty='ADVANCED', link='www.google.com'}";
 
         String actual = entry.toString();
 
+        //comparison
         assertEquals(expected, actual);
     }
 }
