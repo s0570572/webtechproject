@@ -12,10 +12,8 @@ public class EntryEntity {
     private String title;
     @Column (name = "description")
     private String description;
-    @Enumerated(EnumType.STRING)
     @Column (name = "topic")
     private Long topicId;
-    @Enumerated(EnumType.STRING)
     @Column (name = "difficulty")
     private Long difficultyId;
     @Column (name = "link")

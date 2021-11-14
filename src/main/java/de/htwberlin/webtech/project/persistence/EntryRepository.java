@@ -8,8 +8,8 @@ import java.util.List;
 @Repository
 public interface EntryRepository extends JpaRepository<EntryEntity, Long> {
 
-    List<EntryEntity> findAllByDifficultyEntity(DifficultyEntity difficulty);
+//    List<EntryEntity> findAllByDifficultyEntity(DifficultyEntity difficulty);
 
-    List<EntryEntity> findAllByTopicEntity(TopicEntity topic);
+//    List<EntryEntity> findAllByTopicEntity(TopicEntity topic);
 
 }
