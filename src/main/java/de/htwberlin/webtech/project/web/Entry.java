@@ -1,5 +1,8 @@
 package de.htwberlin.webtech.project.web;
 
+import de.htwberlin.webtech.project.persistence.DifficultyEntity;
+import de.htwberlin.webtech.project.persistence.TopicEntity;
+
 public class Entry {
     private Long entryid;
     private String title;
@@ -18,6 +21,9 @@ public class Entry {
         this.topic = topic;
         this.difficulty = difficulty;
         this.link = link;
+    }
+
+    public Entry(Long entryid, String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
     }
 
     public String getTitle() {
