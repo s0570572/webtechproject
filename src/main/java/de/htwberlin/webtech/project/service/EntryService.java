@@ -3,7 +3,7 @@ package de.htwberlin.webtech.project.service;
 import de.htwberlin.webtech.project.persistence.EntryEntity;
 import de.htwberlin.webtech.project.persistence.EntryRepository;
 import de.htwberlin.webtech.project.web.Entry;
-import de.htwberlin.webtech.project.web.EntryCreateRequest;
+import de.htwberlin.webtech.project.web.EntryManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +34,24 @@ public class EntryService {
         return connection;
     }
 
-    public Entry create(EntryCreateRequest request) {
+    public Entry create(EntryManipulationRequest request) {
         var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity(),
                 request.getDifficultyEntity(), request.getLink());
+        entryEntity = repo.save(entryEntity);
+        return transformEntity(entryEntity);
+    }
+
+    public Entry update(Long entryid, EntryManipulationRequest request) {
+        var entryEntityOptional = repo.findById(entryid);
+        if(entryEntityOptional.isEmpty()) {
+            return null;
+        }
+        var entryEntity = entryEntityOptional.get();
+        entryEntity.setTitle(request.getTitle());
+        entryEntity.setDescription(request.getDescription());
+        entryEntity.setTopicEntity(request.getTopicEntity());
+        entryEntity.setDifficultyEntity(request.getDifficultyEntity());
+        entryEntity.setLink(request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
     }
@@ -46,10 +61,6 @@ public class EntryService {
                 entryEntity.getDescription(), entryEntity.getTopicEntity(), entryEntity.getDifficultyEntity(),
                 entryEntity.getLink());
     }
-
-//    public EntryEntity get(Long id) {
-//        return repo.findById(id).orElseThrow(() -> new RuntimeException());
-//    }
 
     public List<Entry> findAll() {
         List<EntryEntity> entries = repo.findAll();

@@ -2,7 +2,7 @@ package de.htwberlin.webtech.project;
 
 import de.htwberlin.webtech.project.service.EntryService;
 import de.htwberlin.webtech.project.web.Entry;
-import de.htwberlin.webtech.project.web.EntryCreateRequest;
+import de.htwberlin.webtech.project.web.EntryManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +31,16 @@ public class EntryRestController {
     }
 
     @PostMapping(path = "/api/v1/entries")
-    public ResponseEntity<Void> createEntry(@RequestBody EntryCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createEntry(@RequestBody EntryManipulationRequest request) throws URISyntaxException {
         var entry = entryService.create(request);
         URI uri = new URI("/api/v1/entries/" + entry.getEntryid());
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(path = "/api/v1/entries/{entryid}")
+    public ResponseEntity<Entry> updateEntry(@PathVariable Long entryid, @RequestBody EntryManipulationRequest request) {
+        var entry = entryService.update(entryid, request);
+        return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
     }
 
     //DELETE

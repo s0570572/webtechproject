@@ -3,7 +3,7 @@ package de.htwberlin.webtech.project.web;
 import de.htwberlin.webtech.project.persistence.DifficultyEntity;
 import de.htwberlin.webtech.project.persistence.TopicEntity;
 
-public class EntryCreateRequest {
+public class EntryManipulationRequest {
 
     private String title;
     private String description;
@@ -11,7 +11,7 @@ public class EntryCreateRequest {
     private DifficultyEntity difficulty;
     private String link;
 
-    public EntryCreateRequest(String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
+    public EntryManipulationRequest(String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
         this.title = title;
         this.description = description;
         this.topic = topic;
