@@ -1,4 +1,4 @@
-package de.htwberlin.webtech.project.backgroundlogic;
+package de.htwberlin.webtech.project.persistence;
 
 public class User {
     Integer userid;

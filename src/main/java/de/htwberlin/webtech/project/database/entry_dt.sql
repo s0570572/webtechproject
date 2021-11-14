@@ -1,3 +1,3 @@
-drop table entry;
-drop table topic;
-drop table difficulty;
+drop table entryEntity;
+drop table topicEntity;
+drop table difficultyEntity;

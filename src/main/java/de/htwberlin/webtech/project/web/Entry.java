@@ -1,18 +1,10 @@
-package de.htwberlin.webtech.project.backgroundlogic;
+package de.htwberlin.webtech.project.web;
 
-import javax.persistence.*;
-
-@Entity
 public class Entry {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long entryid;
     private String title;
     private String description;
-    @Enumerated(EnumType.STRING)
     private Topic topic;
-    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     private String link;
 

@@ -1,4 +1,4 @@
-package de.htwberlin.webtech.project.backgroundlogic;
+package de.htwberlin.webtech.project.persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +24,11 @@ public class EntryService {
         return connection;
     }
 
-    public Entry save(Entry entry) {
-        return repo.save(entry);
+    public EntryEntity save(EntryEntity entryEntity) {
+        return repo.save(entryEntity);
     }
 
-    public Entry get(Long id) {
+    public EntryEntity get(Long id) {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 }
