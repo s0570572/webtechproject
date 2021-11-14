@@ -1,3 +1,3 @@
-delete from entryEntity;
-delete from difficultyEntity;
-delete from topicEntity;
+delete from entry;
+delete from difficulty;
+delete from topic;
