@@ -2,6 +2,7 @@ package de.htwberlin.webtech.project.service;
 
 import de.htwberlin.webtech.project.persistence.EntryEntity;
 import de.htwberlin.webtech.project.persistence.EntryRepository;
+import de.htwberlin.webtech.project.web.Difficulty;
 import de.htwberlin.webtech.project.web.Entry;
 import de.htwberlin.webtech.project.web.EntryManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class EntryService {
     }
 
     public Entry create(EntryManipulationRequest request) {
+        var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
         var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity().getTopicid(),
                 request.getDifficultyEntity().getDifficultyId(), request.getLink());
         entryEntity = repo.save(entryEntity);

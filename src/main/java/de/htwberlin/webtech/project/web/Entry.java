@@ -12,7 +12,7 @@ public class Entry {
     private String link;
 
     public Entry(Long entryid, String title, String description, Long topicId, Long difficultyId, String link) {
-    }
+    }//entw. weiter mit Long id oder mit enum und hier String
 
     public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link) {
         this.title = title;
