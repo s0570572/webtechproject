@@ -19,6 +19,8 @@ public class EntryManipulationRequest {
         this.link = link;
     }
 
+    public EntryManipulationRequest() {}
+
     public String getTitle() {
         return title;
     }
