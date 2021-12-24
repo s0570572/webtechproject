@@ -1,8 +1,5 @@
 package de.htwberlin.webtech.project.web;
 
-import de.htwberlin.webtech.project.persistence.DifficultyEntity;
-import de.htwberlin.webtech.project.persistence.TopicEntity;
-
 public class Entry {
     private Long entryid;
     private String title;
@@ -15,6 +12,7 @@ public class Entry {
     }//entw. weiter mit Long id oder mit enum und hier String
 
     public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link) {
+        this.entryid = entryid;
         this.title = title;
         this.description = description;
         this.topic = topic;

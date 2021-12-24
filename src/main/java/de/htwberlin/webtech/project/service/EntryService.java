@@ -37,8 +37,8 @@ public class EntryService {
 
     public Entry create(EntryManipulationRequest request) {
         var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
-        var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopicEntity().getTopicid(),
-                request.getDifficultyEntity().getDifficultyId(), request.getLink());
+        var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopic(),
+                request.getDifficulty(), request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
     }
@@ -51,8 +51,8 @@ public class EntryService {
         var entryEntity = entryEntityOptional.get();
         entryEntity.setTitle(request.getTitle());
         entryEntity.setDescription(request.getDescription());
-        entryEntity.setTopicId(request.getTopicEntity().getTopicid());
-        entryEntity.setDifficultyId(request.getDifficultyEntity().getDifficultyId());
+        entryEntity.setTopic(request.getTopic());
+        entryEntity.setDifficulty(request.getDifficulty());
         entryEntity.setLink(request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
@@ -68,7 +68,7 @@ public class EntryService {
 
     private Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
-                entryEntity.getDescription(), entryEntity.getTopicId(), entryEntity.getDifficultyId(),
+                entryEntity.getDescription(), entryEntity.getTopic(), entryEntity.getDifficulty(),
                 entryEntity.getLink());
     }
 

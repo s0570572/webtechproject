@@ -1,33 +1,47 @@
 package de.htwberlin.webtech.project.persistence;
 
+import de.htwberlin.webtech.project.web.Difficulty;
+import de.htwberlin.webtech.project.web.Topic;
+
 import javax.persistence.*;
 
-@Entity(name = "entry")
+@Entity(name = "entries")
 public class EntryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "entry_id")
     private Long entryid;
-    @Column (name = "title")
+    @Column (name = "title", nullable = false)
     private String title;
     @Column (name = "description")
     private String description;
-    @Column (name = "topic")
-    private Long topicId;
-    @Column (name = "difficulty")
-    private Long difficultyId;
-    @Column (name = "link")
+    @Enumerated(EnumType.STRING)
+    @Column (name = "topic", nullable = false)
+    private Topic topic;
+    @Enumerated(EnumType.STRING)
+    @Column (name = "difficulty", nullable = false)
+    private Difficulty difficulty;
+    @Column (name = "link", nullable = false)
     private String link;
 
     public EntryEntity() {
     }
 
-    public EntryEntity(String title, String description, Long topicId, Long difficultyId, String link) {
+    public EntryEntity(String title, String description, Topic topic, Difficulty difficulty, String link) {
         this.title = title;
         this.description = description;
-        this.topicId = topicId;
-        this.difficultyId = difficultyId;
+        this.topic = topic;
+        this.difficulty = difficulty;
         this.link = link;
+    }
+
+    public Long getEntryid() {
+        return entryid;
+    }
+
+    public void setEntryid(Long entryid) {
+        this.entryid = entryid;
     }
 
     public String getTitle() {
@@ -38,10 +52,6 @@ public class EntryEntity {
         this.title = title;
     }
 
-    public Long getEntryid() {
-        return entryid;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -50,39 +60,27 @@ public class EntryEntity {
         this.description = description;
     }
 
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public String getLink() {
         return link;
     }
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public Long getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(Long topicId) {
-        this.topicId = topicId;
-    }
-
-    public Long getDifficultyId() {
-        return difficultyId;
-    }
-
-    public void setDifficultyId(Long difficultyId) {
-        this.difficultyId = difficultyId;
-    }
-
-    @Override
-    public String toString() {
-        return "Entry{" +
-                "title='" + title + '\'' +
-                ", entryid=" + entryid +
-                ", description='" + description + '\'' +
-                ", topic=" + topicId +
-                ", difficulty=" + difficultyId +
-                ", link='" + link + '\'' +
-                '}';
     }
 }

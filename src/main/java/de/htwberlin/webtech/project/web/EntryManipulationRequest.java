@@ -7,11 +7,11 @@ public class EntryManipulationRequest {
 
     private String title;
     private String description;
-    private TopicEntity topic;
-    private DifficultyEntity difficulty;
+    private Topic topic;
+    private Difficulty difficulty;
     private String link;
 
-    public EntryManipulationRequest(String title, String description, TopicEntity topic, DifficultyEntity difficulty, String link) {
+    public EntryManipulationRequest(String title, String description, Topic topic, Difficulty difficulty, String link) {
         this.title = title;
         this.description = description;
         this.topic = topic;
@@ -37,19 +37,19 @@ public class EntryManipulationRequest {
         this.description = description;
     }
 
-    public TopicEntity getTopicEntity() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopicEntity(TopicEntity topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
     }
 
-    public DifficultyEntity getDifficultyEntity() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficultyEntity(DifficultyEntity difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
