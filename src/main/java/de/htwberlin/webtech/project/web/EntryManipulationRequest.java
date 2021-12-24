@@ -1,8 +1,5 @@
 package de.htwberlin.webtech.project.web;
 
-import de.htwberlin.webtech.project.persistence.DifficultyEntity;
-import de.htwberlin.webtech.project.persistence.TopicEntity;
-
 public class EntryManipulationRequest {
 
     private String title;
