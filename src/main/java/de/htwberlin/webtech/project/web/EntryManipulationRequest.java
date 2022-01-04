@@ -7,13 +7,15 @@ public class EntryManipulationRequest {
     private Topic topic;
     private Difficulty difficulty;
     private String link;
+    private String kennwort;
 
-    public EntryManipulationRequest(String title, String description, Topic topic, Difficulty difficulty, String link) {
+    public EntryManipulationRequest(String title, String description, Topic topic, Difficulty difficulty, String link, String kennwort) {
         this.title = title;
         this.description = description;
         this.topic = topic;
         this.difficulty = difficulty;
         this.link = link;
+        this.kennwort = kennwort;
     }
 
     public EntryManipulationRequest() {}
@@ -56,5 +58,13 @@ public class EntryManipulationRequest {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getKennwort() {
+        return kennwort;
+    }
+
+    public void setKennwort(String kennwort) {
+        this.kennwort = kennwort;
     }
 }

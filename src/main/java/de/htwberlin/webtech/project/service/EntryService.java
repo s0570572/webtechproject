@@ -5,6 +5,7 @@ import de.htwberlin.webtech.project.persistence.EntryRepository;
 import de.htwberlin.webtech.project.web.Difficulty;
 import de.htwberlin.webtech.project.web.Entry;
 import de.htwberlin.webtech.project.web.EntryManipulationRequest;
+import de.htwberlin.webtech.project.web.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,7 @@ public class EntryService {
     public Entry create(EntryManipulationRequest request) {
         var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
         var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopic(),
-                request.getDifficulty(), request.getLink());
+                request.getDifficulty(), request.getLink(), request.getKennwort());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
     }
@@ -69,7 +70,7 @@ public class EntryService {
     private Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
                 entryEntity.getDescription(), entryEntity.getTopic(), entryEntity.getDifficulty(),
-                entryEntity.getLink());
+                entryEntity.getLink(), entryEntity.getKennwort());
     }
 
     public List<Entry> findAll() {
@@ -81,6 +82,12 @@ public class EntryService {
 
     public Entry findById(Long entryid) {
         var entryEntity = repo.findById(entryid);
+        return entryEntity.map(this::transformEntity).orElse(null);
+    }
+    
+    //find by topic, then by difficulty
+    public Entry findByTopic(Topic topic) {
+        var entryEntity = repo.findByTopic(topic);
         return entryEntity.map(this::transformEntity).orElse(null);
     }
 }

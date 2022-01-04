@@ -3,6 +3,7 @@ package de.htwberlin.webtech.project;
 import de.htwberlin.webtech.project.service.EntryService;
 import de.htwberlin.webtech.project.web.Entry;
 import de.htwberlin.webtech.project.web.EntryManipulationRequest;
+import de.htwberlin.webtech.project.web.Topic;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,12 @@ public class EntryRestController {
     @GetMapping(path = "/api/v1/entries/{entryid}")
     public ResponseEntity<Entry> fetchEntryById(@PathVariable Long entryid) {
         var entry = entryService.findById(entryid);
+        return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping(path = "/api/v1/entries/{topic}")
+    public ResponseEntity<Entry> fetchEntryByTopic(@PathVariable Topic topic) {
+        var entry = entryService.findByTopic(topic);
         return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
     }
 

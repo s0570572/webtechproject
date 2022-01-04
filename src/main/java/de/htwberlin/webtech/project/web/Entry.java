@@ -7,11 +7,12 @@ public class Entry {
     private Topic topic;
     private Difficulty difficulty;
     private String link;
+    private String kennwort;
 
-    public Entry(Long entryid, String title, String description, Long topicId, Long difficultyId, String link) {
+    public Entry(Long entryid, String title, String description, Long topicId, Long difficultyId, String link, String kennwort) {
     }//entw. weiter mit Long id oder mit enum und hier String
 
-    public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link) {
+    public Entry(Long entryid, String title, String description, Topic topic, Difficulty difficulty, String link, String kennwort) {
         this.entryid = entryid;
         this.title = title;
         this.description = description;
@@ -66,6 +67,14 @@ public class Entry {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getKennwort() {
+        return kennwort;
+    }
+
+    public void setKennwort(String kennwort) {
+        this.kennwort = kennwort;
     }
 
     @Override
