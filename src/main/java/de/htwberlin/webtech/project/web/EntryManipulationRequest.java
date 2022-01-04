@@ -18,6 +18,14 @@ public class EntryManipulationRequest {
         this.kennwort = kennwort;
     }
 
+    public EntryManipulationRequest(String title, String description, Topic topic, Difficulty difficulty, String link) {
+        this.title = title;
+        this.description = description;
+        this.topic = topic;
+        this.difficulty = difficulty;
+        this.link = link;
+    }
+
     public EntryManipulationRequest() {}
 
     public String getTitle() {

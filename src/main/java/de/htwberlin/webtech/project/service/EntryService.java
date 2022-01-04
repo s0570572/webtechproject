@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +38,7 @@ public class EntryService {
     }
 
     public Entry create(EntryManipulationRequest request) {
-        var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
+        //var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
         var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopic(),
                 request.getDifficulty(), request.getLink(), request.getKennwort());
         entryEntity = repo.save(entryEntity);
@@ -59,12 +60,19 @@ public class EntryService {
         return transformEntity(entryEntity);
     }
 
-    public boolean deleteById(Long entryid) {
+    public boolean deleteById(Long entryid, String kennzeichen) {
         if(!repo.existsById(entryid)) {
             return false;
         }
-        repo.deleteById(entryid);
-        return true;
+        var entryOptional = repo.findById(entryid).map(this::transformEntity);
+        var entry = entryOptional.get();
+        var kz = entry.getKennwort();
+        if (kz.equals(kennzeichen)) {
+            repo.deleteById(entryid);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Entry transformEntity(EntryEntity entryEntity) {
@@ -88,6 +96,12 @@ public class EntryService {
     //find by topic, then by difficulty
     public Entry findByTopic(Topic topic) {
         var entryEntity = repo.findByTopic(topic);
+        return entryEntity.map(this::transformEntity).orElse(null);
+    }
+
+    public Entry getKennwort(Long id) {
+        var entryEntity = repo.findById(id);
+        //var kennwort = entryEntity.getKennwort(); unapplicable to optional
         return entryEntity.map(this::transformEntity).orElse(null);
     }
 }
