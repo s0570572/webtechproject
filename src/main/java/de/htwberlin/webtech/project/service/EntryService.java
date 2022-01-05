@@ -40,7 +40,7 @@ public class EntryService {
     public Entry create(EntryManipulationRequest request) {
         //var diff = Difficulty.valueOf("BEGINNER");//ERWEITERN!!! für api - Strings senden
         var entryEntity = new EntryEntity(request.getTitle(), request.getDescription(), request.getTopic(),
-                request.getDifficulty(), request.getLink(), request.getKennwort());
+                request.getDifficulty(), request.getLink());
         entryEntity = repo.save(entryEntity);
         return transformEntity(entryEntity);
     }
@@ -60,25 +60,18 @@ public class EntryService {
         return transformEntity(entryEntity);
     }
 
-    public boolean deleteById(Long entryid, String kennzeichen) {
+    public boolean deleteById(Long entryid) {
         if(!repo.existsById(entryid)) {
             return false;
         }
-        var entryOptional = repo.findById(entryid).map(this::transformEntity);
-        var entry = entryOptional.get();
-        var kz = entry.getKennwort();
-        if (kz.equals(kennzeichen)) {
-            repo.deleteById(entryid);
-            return true;
-        } else {
-            return false;
-        }
+        repo.deleteById(entryid);
+        return true;
     }
 
     private Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
                 entryEntity.getDescription(), entryEntity.getTopic(), entryEntity.getDifficulty(),
-                entryEntity.getLink(), entryEntity.getKennwort());
+                entryEntity.getLink());
     }
 
     public List<Entry> findAll() {
@@ -99,9 +92,4 @@ public class EntryService {
         return entryEntity.map(this::transformEntity).orElse(null);
     }
 
-    public Entry getKennwort(Long id) {
-        var entryEntity = repo.findById(id);
-        //var kennwort = entryEntity.getKennwort(); unapplicable to optional
-        return entryEntity.map(this::transformEntity).orElse(null);
-    }
 }

@@ -24,19 +24,16 @@ public class EntryEntity {
     private Difficulty difficulty;
     @Column (name = "link", nullable = false)
     private String link;
-    @Column (name = "kennwort", nullable = true)
-    private String kennwort;
 
     public EntryEntity() {
     }
 
-    public EntryEntity(String title, String description, Topic topic, Difficulty difficulty, String link, String kennwort) {
+    public EntryEntity(String title, String description, Topic topic, Difficulty difficulty, String link) {
         this.title = title;
         this.description = description;
         this.topic = topic;
         this.difficulty = difficulty;
         this.link = link;
-        this.kennwort = kennwort;
     }
 
     public Long getEntryid() {
@@ -87,11 +84,4 @@ public class EntryEntity {
         this.link = link;
     }
 
-    public String getKennwort() {
-        return kennwort;
-    }
-
-    public void setKennwort(String kennwort) {
-        this.kennwort = kennwort;
-    }
 }
