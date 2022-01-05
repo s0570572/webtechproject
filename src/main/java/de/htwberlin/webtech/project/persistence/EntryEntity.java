@@ -24,7 +24,7 @@ public class EntryEntity {
     private Difficulty difficulty;
     @Column (name = "link", nullable = false)
     private String link;
-    @Column (name = "kennwort", nullable = false)
+    @Column (name = "kennwort", nullable = true)
     private String kennwort;
 
     public EntryEntity() {
