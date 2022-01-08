@@ -68,7 +68,7 @@ public class EntryService {
         return true;
     }
 
-    private Entry transformEntity(EntryEntity entryEntity) {
+    public Entry transformEntity(EntryEntity entryEntity) {
         return new Entry(entryEntity.getEntryid(), entryEntity.getTitle(),
                 entryEntity.getDescription(), entryEntity.getTopic(), entryEntity.getDifficulty(),
                 entryEntity.getLink());
