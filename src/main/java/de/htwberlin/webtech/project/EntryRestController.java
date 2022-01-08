@@ -31,7 +31,7 @@ public class EntryRestController {
         return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping(path = "/api/v1/entries/{topic}")
+    @GetMapping(path = "/api/v1/entries-by-{topic}")
     public ResponseEntity<Entry> fetchEntryByTopic(@PathVariable Topic topic) {
         var entry = entryService.findByTopic(topic);
         return entry != null? ResponseEntity.ok(entry) : ResponseEntity.notFound().build();

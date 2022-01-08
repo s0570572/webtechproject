@@ -1,4 +1,4 @@
-package de.htwberlin.webtech.project;
+package de.htwberlin.webtech.project.service;
 
 import de.htwberlin.webtech.project.persistence.EntryEntity;
 import de.htwberlin.webtech.project.persistence.EntryRepository;
